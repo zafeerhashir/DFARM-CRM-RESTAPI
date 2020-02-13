@@ -139,6 +139,20 @@ const dateValidator = (value) =>
                 validBody.push(`${fieldName} is required`)
             }        
         }
+
+        if(fieldType == 'required')
+        {
+            if(requireField(fieldValue) )
+            {
+                validBody.push(null)              
+            }
+            else
+            {
+                validBody.push(`${fieldName} is required`)
+            }
+
+           
+        }
     }
 
     for( let j = 0 ; j < schema.length ; j++ )

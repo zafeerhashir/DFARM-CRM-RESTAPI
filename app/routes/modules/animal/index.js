@@ -1,10 +1,12 @@
-const animals = require('express').Router();
+const animal = require('express').Router();
 
 
 
-animals.get('/',require('./getanimals'));
+animal.get('/',require('./getanimal'));
+animal.post('/',require('./addanimal'));
 
 
 
 
-module.exports = animals;
+
+module.exports = animal;

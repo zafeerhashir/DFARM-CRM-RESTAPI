@@ -8,9 +8,13 @@ module.exports = async (req, res, next )  =>
 
         
 
-     db.client.connect((err, ) => {
+     db.
+     client.
+     connect((err) => {
 
-        db.client.db(db.dbName).
+        db.
+        client.
+        db(db.dbName).
         collection('dFarm').
         aggregate(
                 [
