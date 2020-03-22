@@ -1,15 +1,15 @@
 const routes = require('express').Router();
 const bodyParser = require('body-parser');
-// Require routes
 
 
-// configure app to use bodyParser()
-// this will let us get the data from a POST
+
+
 routes.use(bodyParser.urlencoded({ extended: true }));
 routes.use(bodyParser.json());
-
-// routes.use('/auth',require('./auth/index'));
 routes.use('/modules',require('./modules/index'));
+// routes.use('/modules',require('../middleware/authorizaton'),require('./modules/index'));
+routes.use('/onboarding',require('./onboarding/index'));
+
 
 
 
@@ -26,3 +26,4 @@ routes.get('/', (req, res) => {
 
 
 module.exports = routes;
+

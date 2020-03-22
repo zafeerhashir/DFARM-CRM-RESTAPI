@@ -1,51 +1,26 @@
-// const db = require('../../db/db.connect')
-const assert = require('assert');
-var ObjectId = require('mongodb').ObjectID;
+const animalModel = require('../../../models/animal');
 
 
-module.exports = (req,res,next) =>
+module.exports = async (req, res, next )  =>
+
 {
 
-        const { fromDate, toDate } = req.body
+
+      try
+        {
+            animal = await animalModel.find({});
+
+            if (!animal) res.status(404).send("No item found")
 
 
-        res.
-        status(200).
-        json({ animals: 'animals' })
+            res.send(animal); 
+        }
 
-//      db.client.connect(err => {
+        catch (err) 
+        {
+          res.status(500).send(err);
+        } 
 
-//         const Transactions = db.client.db(db.dbName).collection('Transactions')
-//         const Transactions_Items = db.client.db(db.dbName).collection('Transactions_Items')
-
-//         const cursor = Transactions.
-//         aggregate(
-//         [
-//          {
-//             $lookup:
-//               {
-//                   from: "Transactions_Items",
-//                   localField: "items",
-//                   foreignField: "_id",
-//                   as: "Items"
-//               }
-//           },
-          
-//           {
-//           $project : {  
-//                         items: 0, 
-//                       }
-//           }
-//         ]
-//         )
-      
-//         cursor.forEach(function(doc)
-//         {
-//           res.
-//           status(200).
-//           json({ results: doc })
-//         })
- 
-// })
-
-}
+        
+         
+  }
