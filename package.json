@@ -2,8 +2,11 @@
   "name": "dfms",
   "version": "0.0.0",
   "private": true,
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "npm run build && node dist/bin/www",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
   },
   "dependencies": {
@@ -27,5 +30,8 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "rimraf": "^3.0.2"
-  }
+  },
+  "engines": {
+    "node": "v6.9.0"
+ }
 }
