@@ -1,4 +1,4 @@
-const roleModel = require('../../models/role')
+const roleModel = require('../../../models/role')
 
 module.exports = async (req, res) => {
     try {

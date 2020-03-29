@@ -10,7 +10,6 @@ module.exports = async (req, res) => {
 
     try {
 
-        console.log(req.body,'reqbody')
 
         document = await userModel.findOneAndUpdate(req.params.userId, req.body)
         await document.save()

@@ -1,23 +1,19 @@
-const userModel = require('../../../models/user')
-const jwt = require('jsonwebtoken')
-
+const userModel = require("../../../models/user");
+const jwt = require("jsonwebtoken");
 
 module.exports = async (req, res) => {
-    // Log user out of the application
+  // Log user out of the application
 
-    try {
-        
-        document = await userModel.findById(req.params.userId)
+  try {
+    document = await userModel.findById(req.params.userId);
 
-        document.status = null
+    document.status = null;
 
-        await document.save()
+    await document.save();
 
-        await res.send({ status: 'successfully logout' })
-    }
-    catch (error) {
-        console.log(error, 'err')
-        res.status(500).send()
-    }
-
-}
+    await res.send({ status: "successfully logout" });
+  } catch (error) {
+    console.log(error, "err");
+    res.status(500).send();
+  }
+};
