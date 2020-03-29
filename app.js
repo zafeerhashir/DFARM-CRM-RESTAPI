@@ -6,8 +6,8 @@ const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-// var mailer = require('express-mailer');
-// require('dotenv').config()
+var mailer = require('express-mailer');
+require('dotenv').config()
 
 
 const port = process.env.PORT || 8000; // set our port
