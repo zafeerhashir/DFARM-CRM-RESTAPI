@@ -1,7 +1,7 @@
 const animalModel = require('../../../models/animal');
 
 
-module.exports = async (req, res, next )  =>
+async function getAnimals (req, res, next ) 
 
 {
 
@@ -24,3 +24,6 @@ module.exports = async (req, res, next )  =>
         
          
   }
+
+
+  module.exports = { getAnimals }
