@@ -43,8 +43,8 @@ app.use(async(err, req, res, next) => {
   });
 });
 
-app.use((req, res) => {
-  res.
+app.use(async(req, res) => {
+  await res.
   status(404).
   json({ success: false, message: 'Resource not found.' });
 });
