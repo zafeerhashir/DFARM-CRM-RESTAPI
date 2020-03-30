@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 
 
 
-routes.use(bodyParser.urlencoded({ extended: true }));
-routes.use(bodyParser.json());
+// routes.use(bodyParser.urlencoded({ extended: true }));
+// routes.use(bodyParser.json());
 routes.use('/modules',require('./modules/index'));
 // routes.use('/modules',require('../middleware/authorizaton'),require('./modules/index'));
 // routes.use('/onboarding',require('./onboarding/index'));
