@@ -1,4 +1,4 @@
-const modules = require('express');
+const modules = require('express').Router();
 
 
 modules.use('/animal',require('./animal/index'));

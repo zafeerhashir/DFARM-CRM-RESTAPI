@@ -1,4 +1,4 @@
-const routes = require('express');
+const routes = require('express').Router();
 const bodyParser = require('body-parser');
 
 

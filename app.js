@@ -1,5 +1,5 @@
 const express = require('express');
-// const routes = require('./app/routes/index')
+const routes = require('./app/routes/index')
 const db = require('./app/db/db.connect')
 const app = express();
 const createError = require('http-errors');
@@ -13,7 +13,7 @@ require('dotenv').config()
 const port = process.env.PORT || 8000; // set our port
 
 
-// app.use('/',routes);
+app.use('/',routes);
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
