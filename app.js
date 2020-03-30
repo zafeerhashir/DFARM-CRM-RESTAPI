@@ -1,5 +1,5 @@
 const express = require('express');
-const routes = require('./app/routes/index')
+// const routes = require('./app/routes/index')
 const db = require('./app/db/db.connect')
 const app = express();
 const createError = require('http-errors');
@@ -34,16 +34,15 @@ mailer.extend(app, {
 });
  
 
-app.use(async(err, req, res, next) => {
-  await res.status(err.status || 400).json({
+app.use((err, req, res, next) => {
+  res.status(err.status || 400).json({
     success: false,
     message: err.message || 'An error occured.',
     errors: err.error || [],
   });
 });
 
-app.use(async(req, res) => {
-  await res.
+app.use((req, res) => { res.
   status(404).
   json({ success: false, message: 'Resource not found.' });
 });
