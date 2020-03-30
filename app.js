@@ -35,8 +35,8 @@ mailer.extend(app, {
 });
  
 
-app.use((err, req, res, next) => {
-  res.status(err.status || 400).json({
+app.use(async(err, req, res, next) => {
+  await res.status(err.status || 400).json({
     success: false,
     message: err.message || 'An error occured.',
     errors: err.error || [],
