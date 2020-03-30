@@ -3,14 +3,16 @@ const userModel = require("../../models/user");
 
 const jwt = require("jsonwebtoken");
 
-module.exports = async (req, res) => {
+module.exports = async function addUser(req, res, next) {
   // Create a new user
   try {
-    const user =  new userModel(req.body);
-    const role = await roleModel.findOne({ _id: req.body.role },async(error,document)=>
-    {
-      if (error) throw error;
-    })
+    const user = new userModel(req.body);
+    const role = await roleModel.findOne(
+      { _id: req.body.role },
+      async (error, document) => {
+        if (error) throw error;
+      }
+    );
     user.save(async (error, user) => {
       if (error) throw error;
       console.log(role, "role");

@@ -1,33 +1,24 @@
-const jwt = require('jsonwebtoken')
-const mongoose = require('mongoose')
-const userModel = require('../models/user')
+const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
+const userModel = require("../models/user");
+require("dotenv").config();
 
+module.exports = async function middleware(req, res, next) {
+  const token = req.header("Authorization").replace("Bearer ", "");
 
-module.exports = async(req, res, next) => {
+  try {
+    const data = jwt.verify(token, process.env.JWT_KEY);
+    console.log(data);
 
-    const token = req.header('Authorization').replace('Bearer ', '')
-
-
-
-    try {
-
-        const data = jwt.verify(token, 'DFARM')
-        console.log(data)
-
-        const user = await userModel.find({ 'token': token })
-        if (!user) {
-            throw new Error()
-        }
-        req.user = user
-        req.token = token
-        next()
-    } catch (error) 
-    {
-        console.log(error)
-        res.status(401).send({ error: 'Not authorized to access this resource' })
+    const user = await userModel.find({ token: token });
+    if (!user) {
+      throw new Error();
     }
-  
+    req.user = user;
+    req.token = token;
+    next();
+  } catch (error) {
+    console.log(error);
+    res.status(401).send({ error: "Not authorized to access this resource" });
   }
-  
-  
-  
+};

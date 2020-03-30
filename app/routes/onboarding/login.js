@@ -3,12 +3,13 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
-module.exports = async (req, res) => {
+module.exports = async function login(req, res, next) {
   //Login a registered user
   try {
     const { email, password } = req.body;
 
-    const document = await userModel.findOne({ email })
+    const document = await userModel
+      .findOne({ email })
       .populate({ path: "role", select: "roleName" });
 
     console.log(document, "document");

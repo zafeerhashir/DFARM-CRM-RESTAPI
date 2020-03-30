@@ -1,27 +1,13 @@
-const animalModel = require('../../../models/animal');
+const animalModel = require("../../../models/animal");
 
+module.exports = async function getAnimal(req, res, next) {
+  try {
+    animal = await animalModel.find({});
 
-module.exports = async function getAnimals (req, res, next ) 
+    if (!animal) await res.status(404).send("No item found");
 
-{
-
-
-      try
-        {
-            animal = await animalModel.find({});
-
-            if (!animal) res.status(404).send("No item found")
-
-
-            res.send(animal); 
-        }
-
-        catch (err) 
-        {
-          res.status(500).send(err);
-        } 
-
-        
-         
+    await res.send(animal);
+  } catch (err) {
+    res.status(500).send(err);
   }
-
+};
