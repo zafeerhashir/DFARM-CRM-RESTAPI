@@ -14,7 +14,6 @@ require('dotenv').config()
 const port = process.env.PORT || 8000; // set our port
 
 
-app.use('/',routes);
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -22,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use('/',routes);
 
 
  
