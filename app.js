@@ -13,7 +13,7 @@ require('dotenv').config()
 const port = process.env.PORT || 8000; // set our port
 
 
-// app.use('/',routes);
+app.use('/',routes);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
