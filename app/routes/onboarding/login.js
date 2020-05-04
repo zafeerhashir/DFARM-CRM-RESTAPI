@@ -6,10 +6,10 @@ require("dotenv").config();
 module.exports = async function login(req, res, next) {
   //Login a registered user
   try {
-    const { email, password } = req.body;
+    const { user, password } = req.body;
 
     const document = await userModel
-      .findOne({ email })
+      .findOne({ user })
       .populate({ path: "role", select: "roleName" });
 
     console.log(document, "document");

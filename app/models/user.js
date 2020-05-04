@@ -6,6 +6,11 @@ const Schema = mongoose.Schema;
 
 const userSchema = mongoose.Schema({
   role: { type: Schema.Types.ObjectId, ref: 'role' },
+  userName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   firstName: {
     type: String,
     required: false,
@@ -18,7 +23,7 @@ const userSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
+    required: false,
     unique: true,
     lowercase: true,
     validate: value => {
