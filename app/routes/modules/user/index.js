@@ -10,7 +10,7 @@ user.get('/role/',require('./getrole'))
 // user.patch('/:userId',require('./edituser'))
 user.delete('/:userId',require('./deleteuser'))
 user.post('/createrole',require('./createrole'))
-user.post('/changepassword/:userId',require('./changepassword'))
+// user.post('/changepassword/:userId',require('./changepassword'))
 
 
 
