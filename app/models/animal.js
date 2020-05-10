@@ -5,7 +5,6 @@ const milkAnimalSchema = new mongoose.Schema({
     date: {
         type: Date,
         required: true,
-        max: new Date().toLocaleDateString()
       },
  
     fat:{
