@@ -1,6 +1,7 @@
 const user = require('express').Router();
 
 
+user.post('/changepassword/:userId',require('./changePassword'))
 
 user.get('/',require('./getuser'));
 user.get('/logout/:userId',require('./logout'))
@@ -10,7 +11,6 @@ user.get('/role/',require('./getrole'))
 // user.patch('/:userId',require('./edituser'))
 user.delete('/:userId',require('./deleteuser'))
 user.post('/createrole',require('./createrole'))
-user.post('/changepassword/:userId',require('./changepassword'))
 
 
 
