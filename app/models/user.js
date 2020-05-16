@@ -10,6 +10,8 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
     trim: true,
+    lowercase: true,
+
   },
   firstName: {
     type: String,
@@ -24,7 +26,6 @@ const userSchema = mongoose.Schema({
   email: {
     type: String,
     required: false,
-    unique: true,
     lowercase: true,
     validate: value => {
       if (!validator.isEmail(value)) {
@@ -43,7 +44,8 @@ const userSchema = mongoose.Schema({
   },
   status: {
     type: String,
-    required: false
+    required: false,
+    default: null
   }
 });
 

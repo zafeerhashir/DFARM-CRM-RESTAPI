@@ -32,8 +32,6 @@ const animalSchema = new mongoose.Schema({
   tag: {
     type: String,
     required: true, 
-    unique: true,
-    drop: true
   },
   price: {
     type: Number,

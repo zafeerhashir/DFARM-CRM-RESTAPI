@@ -7,12 +7,14 @@ module.exports = async function addUser(req, res, next) {
   // Create a new user
   try {
     const user = new userModel(req.body);
+
     const role = await roleModel.findOne(
-      { _id: req.body.role },
+      { _id: req.params.roleId },
       async (error, document) => {
         if (error) throw error;
       }
     );
+
     user.save(async (error, user) => {
       if (error) throw error;
       console.log(role, "role");
@@ -24,6 +26,7 @@ module.exports = async function addUser(req, res, next) {
         await res.send(user);
       });
     });
+    
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
