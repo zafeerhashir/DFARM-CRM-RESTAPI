@@ -53,18 +53,11 @@ userSchema.pre('save', async function (next) {
     // Hash the password before saving the user model
     const user = this
     if (user.isModified('password')) {
+      console.log(user,'ddsdsds')
         user.password = await bcrypt.hash(user.password, 8)
     }
     next()
 })
 
-userSchema.pre('findOneAndUpdate', async function() {
-  const docToUpdate = await this.model.findOne(this.getQuery());
-  docToUpdate.password = await bcrypt.hash(docToUpdate.password, 8)
-
-
-  console.log(docToUpdate,'sdsds')
-
-});
 
 module.exports = mongoose.model("user", userSchema,);

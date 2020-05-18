@@ -6,6 +6,12 @@ const jwt = require("jsonwebtoken");
 module.exports = async function addUser(req, res, next) {
   // Create a new user
   try {
+    const findUser = await userModel.find({ userName: req.body.userName });
+
+    if (findUser) {
+      await res.status(409).send({ message: "username Already exists" });
+    }
+
     const user = new userModel(req.body);
 
     const role = await roleModel.findOne(
@@ -26,7 +32,6 @@ module.exports = async function addUser(req, res, next) {
         await res.send(user);
       });
     });
-    
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
