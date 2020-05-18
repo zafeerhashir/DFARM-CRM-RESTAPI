@@ -7,7 +7,7 @@ module.exports = async function addAnimal(req, res, next) {
 
     if(findAnimal)
     {
-      await res.status(304).send("Animal Already exists");
+      await res.status(304).send({message:"Animal Already exists"});
     }
 
     const animal = new animalModel(req.body);
