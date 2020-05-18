@@ -13,6 +13,13 @@ module.exports = async function login(req, res, next) {
       .findOne({ userName })
       .populate({ path: "role", select: "roleName" });
 
+      if(!document)
+      {
+        await res
+        .status(401)
+        .send({ error: "Login failed! Check authentication credentials" });
+      }
+
     console.log(document, "document");
 
     const isPasswordMatch = await bcrypt.compare(password, document.password);
