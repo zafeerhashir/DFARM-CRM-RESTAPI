@@ -23,9 +23,9 @@ module.exports = async function login(req, res, next) {
         .send({ error: "Login failed! Check authentication credentials" });
     }
 
-    if (document.status) {
-      await res.status(200).send({ error: "Logout first", code: "E4" });
-    }
+    // if (document.status) {
+    //   await res.status(200).send({ error: "Logout first", code: "E401" });
+    // }
 
     if (!document) {
       await res
@@ -37,7 +37,7 @@ module.exports = async function login(req, res, next) {
       expiresIn: "24h"
     });
 
-    document.status = new Date().toLocaleTimeString();
+    // document.status = new Date().toLocaleTimeString();
 
     await document.save(async function(err, doc) {
       if (err) throw err;
