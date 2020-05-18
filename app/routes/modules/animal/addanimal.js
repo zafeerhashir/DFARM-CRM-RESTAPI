@@ -1,12 +1,24 @@
 const animalModel = require("../../../models/animal");
 
 module.exports = async function addAnimal(req, res, next) {
-  const animal = new animalModel(req.body);
   try {
+
+    const findAnimal = await animalModel.find({tag:req.body.tag});
+
+    if(findAnimal)
+    {
+      await res.status(304).send("Animal Already exists");
+    }
+
+    const animal = new animalModel(req.body);
+    
     await animal.save();
+
     await res.send(animal);
   } 
   catch (err) {
+
+
     res.status(500).send(err);
   }
 };
