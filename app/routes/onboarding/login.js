@@ -8,19 +8,15 @@ module.exports = async function login(req, res, next) {
   try {
     const { userName, password } = req.body;
 
-
     const document = await userModel
       .findOne({ userName })
-      .populate({ path: "role", select: "roleName" });
+      .populate("role", "roleName");
 
-      if(!document)
-      {
-        await res
+    if (!document) {
+      await res
         .status(401)
         .send({ error: "Login failed! Check authentication credentials" });
-      }
-
-    console.log(document, "document");
+    }
 
     const isPasswordMatch = await bcrypt.compare(password, document.password);
 
@@ -30,23 +26,11 @@ module.exports = async function login(req, res, next) {
         .send({ error: "Login failed! Check authentication credentials" });
     }
 
-    // if (document.status) {
-    //   await res.status(200).send({ error: "Logout first", code: "E401" });
-    // }
-
-    if (!document) {
-      await res
-        .status(401)
-        .send({ error: "Login failed! Check authentication credentials" });
-    }
-
     document.token = jwt.sign({ _id: document._id }, process.env.JWT_KEY, {
-      expiresIn: "24h"
+      expiresIn: "24h",
     });
 
-    // document.status = new Date().toLocaleTimeString();
-
-    await document.save(async function(err, doc) {
+    await document.save(async function (err, doc) {
       if (err) throw err;
       else await res.send({ status: "successfully login", document });
     });
