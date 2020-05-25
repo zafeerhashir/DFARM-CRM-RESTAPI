@@ -3,8 +3,7 @@ const objectId = require("mongodb").ObjectID;
 
 module.exports = async function deleteUser(req, res, next) {
   try {
-    document = await userModel.findByIdAndRemove(req.params.userId);
-    await document.save();
+    const document = await userModel.findByIdAndDelete(req.params.userId);
     await res.send(document);
   } catch (err) {
     console.log(err);
