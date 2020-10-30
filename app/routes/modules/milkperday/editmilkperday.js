@@ -1,8 +1,8 @@
 const milkModel = require("../../../models/milk");
 
-module.exports = async function addMilk(req, res, next) {
+module.exports = async function addMilkPerDay(req, res, next) {
     try {
-        const milk = new milkModel(req.body);
+        const milk = new milkModel.findByIdAndUpdate(req.params.id, req.body);
         await milk.save();
         await res.send(milk);
     } catch (err) {

@@ -1,20 +1,11 @@
-const animalModel = require("../../../models/animal");
+const milkModel = require("../../../models/milk");
 
 module.exports = async function editMilk(req, res, next) {
-  const { date, fat, milkProduceAM, milkProducePM } = req.body;
-
-  const document = await animalModel.findOne({
-    _id: req.params.parentDocumentId
-  });
-
-  item = await document.milk.id(req.params.childDocumentId);
-  item.date = date;
-  item.fat = fat;
-  item.milkProduceAM = milkProduceAM;
-  item.milkProducePM = milkProducePM;
-
-  await document.save(async function(err, document) {
-    if (err) await res.status(500).send(err);
-    else await res.send(document);
-  });
+    try {
+        const milk = milkModel.findByIdAndUpdate(req.params.id, req.body);
+        await milk.save();
+        await res.send(milk);
+    } catch (err) {
+        res.status(500).send(err);
+    }
 };
