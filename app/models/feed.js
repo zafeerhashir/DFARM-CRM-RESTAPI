@@ -33,48 +33,6 @@ const feedSchema = new mongoose.Schema({
 
 
 
-
-
 module.exports =  mongoose.model("feed", feedSchema);
 
 
-// feedSchema = {
-//     validator: {
-//         $jsonSchema: {
-//             bsonType: "object",
-//             required: ["date", "feed"],
-//             properties: {
-//                 date: {
-//                     bsonType: ["object"],
-//                     description: "date must be an iso date"
-//                 },
-//                 feed: {
-//                     bsonType: "object",
-//                     required: ["name", "unit", "price"],
-//                     properties: {
-//                         name: {
-//                             bsonType: ["double"],
-//                             description: "name must be an string",
-//                             regex: regex.alphabetRegex
-//                         },
-//                         unit: {
-//                             bsonType: ["double"],
-//                             "description": "unit must be a float",
-//                             regex: regex.floatRegex
-
-//                         },
-//                         price: {
-//                             bsonType: ["double"],
-//                             description: "price must be a float",
-//                             regex: regex.floatRegex
-
-//                         },
-
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// module.exports = feedSchema

@@ -1,11 +1,17 @@
 const milkModel = require("../../../models/milk");
 
 module.exports = async function getMilk(req, res, next) {
-    try {
-        const milk = await milkModel.find({});
-        if (!milk) await res.status(404).send("No item found");
-        await res.send(milk);
-    } catch (err) {
-        res.status(500).send(err);
-    }
+  try {
+    await milkModel
+      .find({})
+      .populate("animal")
+      .exec((error, item) => {
+        if (error) throw error;
+        if (!item) res.status(404).send("No item found");
+        else res.send(item);
+      });
+    // if (!milk) await res.status(404).send("No item found");
+  } catch (err) {
+    res.status(500).send(err);
+  }
 };

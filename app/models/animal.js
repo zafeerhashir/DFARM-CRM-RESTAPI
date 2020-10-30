@@ -1,32 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// const milkAnimalSchema = new mongoose.Schema({
-
-//     date: {
-//         type: Date,
-//         required: true,
-//       },
-
-//     fat:{
-//         type: Number,
-//         required: false,
-//     },
-//     milkProduceAM:{
-//         type: Number,
-//         required: true,
-//         default: 0,
-//     },
-
-//     milkProducePM:{
-//         type: Number,
-//         required: true,
-//         default: 0,
-
-//   },
-
-//   });
-
 const animalSchema = new mongoose.Schema({
     tag: {
         type: String,
@@ -35,6 +9,16 @@ const animalSchema = new mongoose.Schema({
 
     price: {
         type: Number,
+        required: false,
+    },
+
+    purchaseDate: {
+        type: Date,
+        required: false,
+    },
+
+    origin: {
+        type: String,
         required: false,
     },
 

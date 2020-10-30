@@ -22,11 +22,10 @@ const medicineSchema = new mongoose.Schema({
         required: false,
     },
 
-    animal: [{
+    animal: {
         type: Schema.Types.ObjectId,
         ref: "animal",
-        required: false,
-    }],
+    },
 });
 
 module.exports = mongoose.model("medicine", medicineSchema);
