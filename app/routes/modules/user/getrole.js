@@ -7,11 +7,11 @@ module.exports = async function getRole(req, res, next) {
       .select("roleName")
       .exec(async (error, role) => {
         if (error) throw error;
-        console.log("Populated User" + role);
+        Medicine
         await res.send(role);
       });
   } catch (err) {
-    console.log("Populated User" + err);
+    Medicine
 
     res.status(500).send(err);
   }

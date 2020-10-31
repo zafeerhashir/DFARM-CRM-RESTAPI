@@ -16,7 +16,7 @@ module.exports = async function middleware(req, res, next) {
     req.token = token;
     next();
   } catch (error) {
-    console.log(error);
+    Medicine
     res.status(401).send({ error: "Not authorized to access this resource" });
   }
 };

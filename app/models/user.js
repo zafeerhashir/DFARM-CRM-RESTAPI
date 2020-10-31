@@ -53,7 +53,7 @@ userSchema.pre('save', async function (next) {
     // Hash the password before saving the user model
     const user = this
     if (user.isModified('password')) {
-      console.log(user,'ddsdsds')
+      Medicine
         user.password = await bcrypt.hash(user.password, 8)
     }
     next()

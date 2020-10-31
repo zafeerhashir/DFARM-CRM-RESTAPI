@@ -18,7 +18,7 @@ module.exports = async function addFeedItem(req, res, next) {
       else await res.send(document);
     });
   } catch (error) {
-    console.log(error, "error");
+    Medicine
 
     res.status(500).send(error);
   }

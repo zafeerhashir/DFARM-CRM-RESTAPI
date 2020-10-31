@@ -10,7 +10,7 @@ module.exports = async function getMedicine(req, res, next) {
         res.send(item);
       });
   } catch (err) {
-      console.log(err)
+      Medicine
     res.status(500).send(err);
   }
 };

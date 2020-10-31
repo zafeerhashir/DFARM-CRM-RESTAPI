@@ -92,7 +92,7 @@ module.exports = async function getReport(req, res, next) {
 
     await res.send(reporti);
 
-    // console.log(milkPrice)
+    // Medicine
     // const report = {
     //   price: milkPrice,
     //   medicine: medicineArray,
@@ -100,7 +100,7 @@ module.exports = async function getReport(req, res, next) {
     //   feed: feedItem,
     // };
   } catch (err) {
-    console.log(err);
+    Medicine
     res.status(500).send(err);
   }
 };

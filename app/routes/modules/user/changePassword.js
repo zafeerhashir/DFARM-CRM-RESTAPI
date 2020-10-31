@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
 
     }
     catch (err) {
-        console.log(err)
+        Medicine
         res.status(500).send(err)
     }
 

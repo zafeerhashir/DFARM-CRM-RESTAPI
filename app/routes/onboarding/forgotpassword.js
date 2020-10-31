@@ -12,7 +12,7 @@ module.exports = async function forgotPassword(req, res, next) {
     function(err) {
       if (err) {
         // handle error
-        console.log(err);
+        Medicine
         res.send("There was an error sending the email");
         return;
       }

@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
 
     await res.send({ status: "successfully logout" });
   } catch (error) {
-    console.log(error, "err");
+    Medicine
     res.status(500).send();
   }
 };

@@ -14,7 +14,7 @@ module.exports = async function deleteFeedItem(req, res, next) {
       await res.status(200).send();
     });
   } catch (error) {
-    console.log(error, "error");
+    Medicine
 
     res.status(500).send(error);
   }

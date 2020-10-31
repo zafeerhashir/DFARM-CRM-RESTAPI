@@ -32,7 +32,7 @@ module.exports = async function addUser(req, res, next) {
       });
     }
   } catch (error) {
-    console.log(error);
+    Medicine
     res.status(500).send(error);
   }
 };

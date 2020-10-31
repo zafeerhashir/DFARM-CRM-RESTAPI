@@ -7,7 +7,7 @@ module.exports = async function editUser(req, res, next) {
     await document.save();
     await res.send(document);
   } catch (err) {
-    console.log(err);
+    Medicine
     res.status(500).send(err);
   }
 };
