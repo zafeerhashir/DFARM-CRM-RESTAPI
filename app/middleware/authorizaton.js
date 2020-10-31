@@ -8,8 +8,6 @@ module.exports = async function middleware(req, res, next) {
 
   try {
     const data = jwt.verify(token, process.env.JWT_KEY);
-    console.log(data);
-
     const user = await userModel.find({ token: token });
     if (!user) {
       throw new Error();

@@ -6,7 +6,6 @@ module.exports = async function createRole(req, res, next) {
     await role.save();
     res.send(role);
   } catch (error) {
-    console.log(error);
     res.status(500).send(error);
   }
 };

@@ -8,8 +8,6 @@ module.exports = async function addUser(req, res, next) {
   try {
     const findUser = await userModel.findOne({ userName: req.body.userName });
 
-    console.log(findUser, "findUser");
-
     const role = await roleModel.findOne({ roleName: req.params.roleName });
 
     if (!role) {
@@ -24,7 +22,6 @@ module.exports = async function addUser(req, res, next) {
 
       user.save(async (error, user) => {
         if (error) throw error;
-        console.log(role, "role");
         await role.user.push(user);
 
         role.save(async (error, role) => {

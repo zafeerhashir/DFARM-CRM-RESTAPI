@@ -1,6 +1,8 @@
 const userModel = require("../../../models/user");
 const roleModel = require("../../../models/role");
 
+ // BASIC_USER
+ // SUPER_USER
 module.exports = async function getUser(req, res, next) {
   try {
     await roleModel
@@ -8,7 +10,6 @@ module.exports = async function getUser(req, res, next) {
       populate('user')
       .exec(async (error, user) => {
         if (error) throw error;
-        console.log("Populated User" + user);
         await res.send(user);
       });
     // res.send(user)

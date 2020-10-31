@@ -35,7 +35,6 @@ module.exports = async function login(req, res, next) {
       else await res.send({ status: "successfully login", document });
     });
   } catch (error) {
-    console.log(error, "err");
     await res.status(500).send(error);
   }
 };
