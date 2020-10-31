@@ -50,4 +50,3 @@ app.use((req, res) => { res.
 // Start the server
 app.listen(port);
 
-Medicine
