@@ -30,7 +30,7 @@ mailer.extend(app, {
   transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
   auth: {
     user: 'zafeerhashir@gmail.com',
-    pass: 'shannensyed'
+    pass: '1'
   }
 });
  
