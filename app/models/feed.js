@@ -18,8 +18,11 @@ const feedItemsSchema = new mongoose.Schema({
     quantity:{
         type: Number,
         required: true,
+    },
+    consumed:{
+      type: Boolean,
+      default: false,
     }
-
   });
 
 

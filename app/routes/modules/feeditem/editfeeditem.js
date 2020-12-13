@@ -1,7 +1,7 @@
 const feedModel = require("../../../models/feed");
 
 module.exports = async function editFeedItem(req, res, next) {
-  const { unit, price, kilogram, name } = req.body;
+  const { unit, price, quantity, name, consumed } = req.body;
   try {
     const document = await feedModel.findOne({
       _id: req.params.parentDocumentId
@@ -10,8 +10,10 @@ module.exports = async function editFeedItem(req, res, next) {
     item = await document.feed.id(req.params.childDocumentId);
     item.unit = unit;
     item.price = price;
-    item.kilogram = kilogram;
+    item.quantity = quantity;
     item.name = name;
+    item.consumed = consumed
+
 
     await document.save(async function(error, document) {
       if (error) throw error;
