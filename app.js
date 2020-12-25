@@ -13,41 +13,46 @@ require('dotenv').config()
 const port = process.env.PORT || 8000; // set our port
 
 
-app.use('/',routes);
+app.use('/', routes);
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
- 
+
 mailer.extend(app, {
-  from: 'no-reply@example.com',
-  host: 'smtp.gmail.com', // hostname
-  secureConnection: true, // use SSL
-  port: 465, // port for secure SMTP
-  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
-  auth: {
-    user: 'zafeerhashir@gmail.com',
-    pass: '1'
-  }
+    from: 'no-reply@example.com',
+    host: 'smtp.gmail.com', // hostname
+    secureConnection: true, // use SSL
+    port: 465, // port for secure SMTP
+    transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+    auth: {
+        user: 'zafeerhashir@gmail.com',
+        pass: '1'
+    }
 });
- 
+
 
 app.use((err, req, res, next) => {
-  res.status(err.status || 400).json({
-    success: false,
-    message: err.message || 'An error occured.',
-    errors: err.error || [],
-  });
+    res.status(err.status || 400).json({
+        success: false,
+        message: err.message || 'An error occured.',
+        errors: err.error || [],
+    });
 });
 
-app.use((req, res) => { res.
-  status(404).
-  json({ success: false, message: 'Resource not found.' });
+app.use((req, res) => {
+    res.
+    status(404).
+    json({ success: false, message: 'Resource not found.' });
 });
 
 // Start the server
 console.log(port)
-app.listen(port);
+let server = app.listen(port);
 
+server.on('clientError', (err, socket) => {
+    console.error(err);
+    socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+});
