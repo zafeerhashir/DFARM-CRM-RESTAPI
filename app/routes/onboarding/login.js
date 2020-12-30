@@ -26,9 +26,10 @@ module.exports = async function login(req, res, next) {
         .send({ error: "Login failed! Check authentication credentials" });
     }
 
-    document.token = jwt.sign({ _id: document._id }, process.env.JWT_KEY, {
-      expiresIn: "24h",
-    });
+    // document.token = jwt.sign({ _id: document._id }, process.env.JWT_KEY, {
+    //   expiresIn: "24h",
+    // });
+    document.token = jwt.sign({ _id: document._id }, process.env.JWT_KEY, { });
 
     await document.save(async function (err, doc) {
       if (err) throw err;
