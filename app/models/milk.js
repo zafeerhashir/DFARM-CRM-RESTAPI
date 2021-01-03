@@ -36,6 +36,27 @@ const milkSchema = new mongoose.Schema({
         required: true,
         default: 0,
     },
+    milkGallonAM:{
+        type: Number,
+        required: false,
+        default: 0,
+    },
+    milkGallonPM:{
+        type: Number,
+        required: false,
+        default: 0,
+    },
+    milkLiterAM:{
+        type: Number,
+        required: false,
+        default: 0,
+    },
+    milkLiterPM:{
+        type: Number,
+        required: false,
+        default: 0,
+    }
+
 });
 
 module.exports = mongoose.model("milk", milkSchema);

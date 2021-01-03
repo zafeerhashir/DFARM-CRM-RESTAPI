@@ -3,6 +3,7 @@ const feedModel = require("../../../models/feed");
 const animalModel = require("../../../models/animal");
 const medicineModel = require("../../../models/medicine");
 
+const oneGallonInLiter = 40; 
 const getFeedItemsPrice = async function(items) {
     if (!items || items.length === 0) return null;
     const feedItems = [];
@@ -21,6 +22,16 @@ const getMilkPrice = async function(items) {
     var price = 0;
     for (let i of items) {
         price += i.rate * (i.milkProducePM + i.milkProduceAM);
+    }
+    return price;
+};
+
+
+const getMilkGallonLiterPrice = async function(items) {
+    if (!items || items.length === 0) return null;
+    var price = 0;
+    for (let i of items) {
+        price += i.rate * ((i.milkGallonAM*oneGallonInLiter) + (i.milkGallonPM*oneGallonInLiter) + i.milkLiterAM + i.milkLiterPM);
     }
     return price;
 };
@@ -45,8 +56,8 @@ const getAnimalPrice = async function(items) {
     return price;
 };
 
-async function report(animalPrice, milkPrice, feedPrice, medicinePrice) {
-    return { animalPrice, milkPrice, feedPrice, medicinePrice }
+async function report(animalPrice, milkPrice, feedPrice, medicinePrice, milkGallonLiterPrice) {
+    return { animalPrice, milkPrice, feedPrice, medicinePrice, milkGallonLiterPrice }
 }
 
 module.exports = async function getReport(req, res, next) {
@@ -79,15 +90,18 @@ module.exports = async function getReport(req, res, next) {
 
         const feedPrice = await getFeedItemsPrice(feedDateArray);
         const milkPrice = await getMilkPrice(milkArray);
+        const milkGallonLiterPrice = await getMilkGallonLiterPrice(milkArray);
         const medicinePrice = await getMedicinePrice(medicineArray);
         const animalPrice = await getAnimalPrice(animalArray);
+
 
 
         const reporti = await report(
             animalPrice,
             milkPrice,
             feedPrice,
-            medicinePrice
+            medicinePrice,
+            milkGallonLiterPrice
         );
 
         await res.send(reporti);
