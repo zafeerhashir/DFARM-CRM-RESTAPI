@@ -44,12 +44,11 @@ app.use((err, req, res, next) => {
 
 app.use((req, res) => {
     res.
-    status(404).
-    json({ success: false, message: 'Resource not found.' });
+        status(404).
+        json({ success: false, message: 'Resource not found.' });
 });
 
 // Start the server
-console.log(port)
 let server = app.listen(port);
 
 server.on('clientError', (err, socket) => {
