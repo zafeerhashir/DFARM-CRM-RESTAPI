@@ -1,17 +1,13 @@
-const roleModel = require('../../../models/role')
+const roleModel = require("../../../models/role");
 
 module.exports = async (req, res) => {
-    try {
+  try {
+    const role = new roleModel(req.body);
 
-        const role = new roleModel(req.body)
+    await role.save();
 
-        await role.save()
-
-        res.send(role)
-    }
-    catch (error) {
-
-        res.status(500).send(error)
-    }
-}
-
+    res.send(role);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};

@@ -8,7 +8,8 @@ module.exports = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const document = await userModel.findOne({ email })
+    const document = await userModel
+      .findOne({ email })
       .populate({ path: "role", select: "roleName" });
 
     const isPasswordMatch = await bcrypt.compare(password, document.password);
@@ -30,7 +31,7 @@ module.exports = async (req, res) => {
     }
 
     document.token = jwt.sign({ _id: document._id }, process.env.JWT_KEY, {
-      expiresIn: "24h"
+      expiresIn: "24h",
     });
 
     document.status = new Date().toLocaleTimeString();

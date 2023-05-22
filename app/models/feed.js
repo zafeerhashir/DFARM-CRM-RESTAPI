@@ -1,6 +1,6 @@
-const regex = require('./regex')
+const regex = require("./regex");
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const feedIemsSchema = new mongoose.Schema({
   name: {
@@ -18,27 +18,19 @@ const feedIemsSchema = new mongoose.Schema({
   kilogram: {
     type: Number,
     required: true,
-  }
-
+  },
 });
-
 
 const feedSchema = new mongoose.Schema({
   date: {
     type: Date,
     required: true,
-    max: new Date().toLocaleDateString()
-
+    max: new Date().toLocaleDateString(),
   },
-  feed: [feedIemsSchema]
+  feed: [feedIemsSchema],
 });
 
-
-
-
-
 module.exports = mongoose.model("feed", feedSchema);
-
 
 // feedSchema = {
 //     validator: {

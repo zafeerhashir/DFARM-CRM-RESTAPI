@@ -1,23 +1,13 @@
-
-
-const feedModel = require('../../../models/feed');
-
-
-
+const feedModel = require("../../../models/feed");
 
 module.exports = async (req, res, next) => {
   try {
+    const feed = await feedModel.findByIdAndDelete(req.params.id);
 
-    const feed = await feedModel.findByIdAndDelete(req.params.id)
+    if (!feed) res.status(404).send("No item found");
 
-    if (!feed) res.status(404).send("No item found")
-
-    res.status(200).send()
+    res.status(200).send();
+  } catch (err) {
+    res.status(500).send(err);
   }
-
-  catch (err) {
-
-    res.status(500).send(err)
-
-  }
-}
+};

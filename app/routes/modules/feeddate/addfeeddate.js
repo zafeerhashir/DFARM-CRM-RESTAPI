@@ -1,8 +1,4 @@
-
-const feedModel = require('../../../models/feed');
-
-
-
+const feedModel = require("../../../models/feed");
 
 module.exports = async (req, res, next) => {
   const feed = new feedModel(req.body);
@@ -11,8 +7,7 @@ module.exports = async (req, res, next) => {
     await feed.save();
 
     res.send(feed);
-  }
-  catch (err) {
+  } catch (err) {
     res.status(500).send(err);
   }
-}
+};

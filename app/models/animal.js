@@ -1,11 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const milkAnimalSchema = new mongoose.Schema({
-
   date: {
     type: Date,
     required: true,
-    max: new Date().toLocaleDateString()
+    max: new Date().toLocaleDateString(),
   },
 
   fat: {
@@ -22,29 +21,21 @@ const milkAnimalSchema = new mongoose.Schema({
     type: Number,
     required: true,
     default: 0,
-
   },
-
-
 });
-
 
 const animalSchema = new mongoose.Schema({
   tag: {
     type: String,
     required: true,
     unique: true,
-    drop: true
+    drop: true,
   },
   price: {
     type: Number,
     required: false,
   },
-  milk: [milkAnimalSchema]
+  milk: [milkAnimalSchema],
 });
 
-
-
 module.exports = mongoose.model("animal", animalSchema);
-
-

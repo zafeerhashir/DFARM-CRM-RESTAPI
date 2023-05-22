@@ -1,7 +1,4 @@
-const animalModel = require('../../../models/animal');
-
-
-
+const animalModel = require("../../../models/animal");
 
 module.exports = async (req, res, next) => {
   const animal = new animalModel(req.body);
@@ -10,8 +7,7 @@ module.exports = async (req, res, next) => {
     await animal.save();
 
     await res.send(animal);
-  }
-  catch (err) {
+  } catch (err) {
     res.status(500).send(err);
   }
-}
+};
