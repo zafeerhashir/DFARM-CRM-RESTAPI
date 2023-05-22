@@ -11,7 +11,6 @@ module.exports = async(req, res) => {
           }, function (err) {
             if (err) {
               // handle error
-              console.log(err);
               res.send('There was an error sending the email');
               return;
             }
