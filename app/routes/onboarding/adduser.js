@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
     })
     user.save(async (error, user) => {
       if (error) throw error;
-      console.log(role, "role");
+      
       await role.user.push(user);
 
       role.save(async (error, role) => {
@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
       });
     });
   } catch (error) {
-    console.log(error);
+    
     res.status(500).send(error);
   }
 };
