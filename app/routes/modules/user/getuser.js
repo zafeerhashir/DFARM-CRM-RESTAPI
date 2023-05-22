@@ -4,10 +4,10 @@ module.exports = async (req, res, next) => {
   try {
     await userModel
       .find({})
-      .populate({path: 'role', select: 'roleName' })
-      .exec(async(error, user) => {
-          if(error) throw error
-        console.log('Populated User' + user);
+      .populate({ path: 'role', select: 'roleName' })
+      .exec(async (error, user) => {
+        if (error) throw error
+
         await res.send(user);
       });
     // res.send(user)

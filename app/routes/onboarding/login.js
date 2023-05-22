@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
 
     document.status = new Date().toLocaleTimeString();
 
-    await document.save(async function(err, doc) {
+    await document.save(async function (err, doc) {
       if (err) throw err;
       else await res.send({ status: "successfully login", document });
     });

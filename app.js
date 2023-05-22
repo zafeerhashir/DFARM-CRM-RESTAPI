@@ -13,7 +13,7 @@ require('dotenv').config()
 const port = process.env.PORT || 8000; // set our port
 
 
-app.use('/',routes);
+app.use('/', routes);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
- 
+
 mailer.extend(app, {
   from: 'no-reply@example.com',
   host: 'smtp.gmail.com', // hostname
@@ -33,7 +33,7 @@ mailer.extend(app, {
     pass: '1'
   }
 });
- 
+
 
 app.use((err, req, res, next) => {
   res.status(err.status || 400).json({
@@ -45,11 +45,10 @@ app.use((err, req, res, next) => {
 
 app.use((req, res) => {
   res.
-  status(404).
-  json({ success: false, message: 'Resource not found.' });
+    status(404).
+    json({ success: false, message: 'Resource not found.' });
 });
 
 // Start the server
 app.listen(port);
 
-console.log(`Server started on port ${port}`);

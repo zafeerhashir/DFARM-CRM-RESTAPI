@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const userModel = require('../models/user')
 
 
-module.exports = async(req, res, next) => {
+module.exports = async (req, res, next) => {
 
     const token = req.header('Authorization').replace('Bearer ', '')
 
@@ -12,7 +12,7 @@ module.exports = async(req, res, next) => {
     try {
 
         const data = jwt.verify(token, 'DFARM')
-        console.log(data)
+
 
         const user = await userModel.find({ 'token': token })
         if (!user) {
@@ -21,13 +21,11 @@ module.exports = async(req, res, next) => {
         req.user = user
         req.token = token
         next()
-    } catch (error) 
-    {
-        console.log(error)
+    } catch (error) {
+
         res.status(401).send({ error: 'Not authorized to access this resource' })
     }
-  
-  }
-  
-  
-  
+
+}
+
+

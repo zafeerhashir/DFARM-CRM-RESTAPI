@@ -3,24 +3,24 @@ const regex = require('./regex')
 const mongoose = require('mongoose');
 
 const feedIemsSchema = new mongoose.Schema({
-    name: {
-      type: String,
-      required: true,
-    },
-    price:{
-        type: Number,
-        required: true,
-    },
-    unit:{
-        type: Number,
-        required: true,
-    },
-    kilogram:{
-        type: Number,
-        required: true,
-    }
+  name: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  unit: {
+    type: Number,
+    required: true,
+  },
+  kilogram: {
+    type: Number,
+    required: true,
+  }
 
-  });
+});
 
 
 const feedSchema = new mongoose.Schema({
@@ -28,7 +28,7 @@ const feedSchema = new mongoose.Schema({
     type: Date,
     required: true,
     max: new Date().toLocaleDateString()
- 
+
   },
   feed: [feedIemsSchema]
 });
@@ -37,7 +37,7 @@ const feedSchema = new mongoose.Schema({
 
 
 
-module.exports =  mongoose.model("feed", feedSchema);
+module.exports = mongoose.model("feed", feedSchema);
 
 
 // feedSchema = {

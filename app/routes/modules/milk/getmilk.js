@@ -1,21 +1,18 @@
 const animalModel = require('../../../models/animal');
 
 
-module.exports = async (req, res, next )  =>
-{
+module.exports = async (req, res, next) => {
 
-      try
-        {
-            document = await animalModel.find({});
-            
-            res.send(document); 
-         
-        }
+  try {
+    document = await animalModel.find({});
 
-        catch (err) 
-        {
-          res.status(500).send(err);
-        } 
-        
-         
+    res.send(document);
+
+  }
+
+  catch (err) {
+    res.status(500).send(err);
+  }
+
+
 }

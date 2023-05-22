@@ -3,32 +3,31 @@
 const animalModel = require('../../../models/animal');
 
 
-module.exports = async (req, res, next )  =>
-{
+module.exports = async (req, res, next) => {
 
-    try {
+  try {
 
 
-      const document = await animalModel.findOne({ _id: req.params.parentDocumentId })
+    const document = await animalModel.findOne({ _id: req.params.parentDocumentId })
 
-      
-      await document.milk.pull({ _id: req.params.childDocumentId }).remove();
 
-      await document.save(async function (error) {
+    await document.milk.pull({ _id: req.params.childDocumentId }).remove();
 
-          if (error) throw error          
-          
-          await res.status(200).send()
-        
-        });
-      
-      } 
+    await document.save(async function (error) {
 
-      catch (err) {
-        
-        console.log(err,'error')
+      if (error) throw error
 
-        res.status(500).send(err)
-      
-      }
+      await res.status(200).send()
+
+    });
+
+  }
+
+  catch (err) {
+
+
+
+    res.status(500).send(err)
+
+  }
 }

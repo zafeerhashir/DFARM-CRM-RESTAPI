@@ -1,21 +1,18 @@
 const feedModel = require('../../../models/feed');
 
 
-module.exports = async (req, res, next )  =>
-{
+module.exports = async (req, res, next) => {
 
-      try
-        {
-            feed = await feedModel.find({}).populate('feed');
-            
-            res.send(feed); 
-         
-        }
+  try {
+    feed = await feedModel.find({}).populate('feed');
 
-        catch (err) 
-        {
-          res.status(500).send(err);
-        } 
-        
-         
+    res.send(feed);
+
   }
+
+  catch (err) {
+    res.status(500).send(err);
+  }
+
+
+}
