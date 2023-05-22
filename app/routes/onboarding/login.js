@@ -11,8 +11,6 @@ module.exports = async (req, res) => {
     const document = await userModel.findOne({ email })
       .populate({ path: "role", select: "roleName" });
 
-    console.log(document, "document");
-
     const isPasswordMatch = await bcrypt.compare(password, document.password);
 
     if (!isPasswordMatch) {
